@@ -34,9 +34,9 @@
             <svg id="volumeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <defs>
                     <linearGradient id="volumeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#1abc9c;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#16a085;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+                        <stop offset="0%" style="stop-color:#E9D08E;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#C9A24D;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#B8893A;stop-opacity:1" />
                     </linearGradient>
                 </defs>
                 <!-- Altavoz -->
@@ -59,15 +59,15 @@
                 </path>
                 
                 <!-- Partículas de sonido -->
-                <circle cx="13" cy="8" r="0.5" fill="#1abc9c" opacity="0" class="sound-particle">
+                <circle cx="13" cy="8" r="0.5" fill="#E9D08E" opacity="0" class="sound-particle">
                     <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" begin="0s"/>
                     <animateTransform attributeName="transform" type="translate" values="0,0;3,-2" dur="1s" repeatCount="indefinite" begin="0s"/>
                 </circle>
-                <circle cx="13" cy="16" r="0.5" fill="#16a085" opacity="0" class="sound-particle">
+                <circle cx="13" cy="16" r="0.5" fill="#C9A24D" opacity="0" class="sound-particle">
                     <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite" begin="0.3s"/>
                     <animateTransform attributeName="transform" type="translate" values="0,0;3,2" dur="1.2s" repeatCount="indefinite" begin="0.3s"/>
                 </circle>
-                <circle cx="13" cy="12" r="0.8" fill="#27ae60" opacity="0" class="sound-particle">
+                <circle cx="13" cy="12" r="0.8" fill="#B8893A" opacity="0" class="sound-particle">
                     <animate attributeName="opacity" values="0;1;0" dur="0.8s" repeatCount="indefinite" begin="0.6s"/>
                     <animateTransform attributeName="transform" type="translate" values="0,0;4,0" dur="0.8s" repeatCount="indefinite" begin="0.6s"/>
                 </circle>
@@ -241,12 +241,28 @@
                             <button class="btn-wedding" onclick="showDressCode()">Ver más</button>
                         </div>
                         <div class="party-card">
-                            <div class="party-icon animated-clipboard">
-                                <img class="icono-invitacion icono-camara-subir" src="icono-camara-subir.png" alt="" loading="lazy">
+                            <div class="party-icon">
+                                <svg class="icono-invitacion icono-notas" viewBox="0 0 120 96" role="img" aria-hidden="true">
+                                    <defs>
+                                        <linearGradient id="notaOro" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0" stop-color="#B8893A"/>
+                                            <stop offset=".5" stop-color="#E9D08E"/>
+                                            <stop offset="1" stop-color="#B8893A"/>
+                                        </linearGradient>
+                                        <radialGradient id="notaLacre" cx=".4" cy=".35" r=".7">
+                                            <stop offset="0" stop-color="#C02A40"/>
+                                            <stop offset="1" stop-color="#6E1222"/>
+                                        </radialGradient>
+                                    </defs>
+                                    <rect x="8" y="18" width="104" height="70" rx="6" fill="#FFFBF4" stroke="url(#notaOro)" stroke-width="3"/>
+                                    <path d="M10 22 L60 58 L110 22" fill="none" stroke="url(#notaOro)" stroke-width="3" stroke-linejoin="round"/>
+                                    <circle cx="60" cy="56" r="15" fill="url(#notaLacre)" stroke="#E9D08E" stroke-width="1.5"/>
+                                    <path d="M60 64 C54 59 50 56 50 52 a5 5 0 0 1 10 -1 a5 5 0 0 1 10 1 c0 4 -4 7 -10 12z" fill="#F3D68A" transform="translate(0,-2) scale(1) "/>
+                                </svg>
                             </div>
-                            <h3 class="event-title">Comparte tus Fotos</h3>
-                            <p>Ayúdanos a capturar cada momento, sube las fotos que tomes durante la fiesta.</p>
-                            <button class="btn-wedding" onclick="sharePhotos()">Subir fotos</button>
+                            <h3 class="event-title">Notas importantes</h3>
+                            <p>Con mucho cariño, les pido asistir sin niños.</p>
+                            <button class="btn-wedding" onclick="showNotes()">Ver más</button>
                         </div>
                     </div>
                 </div>
@@ -278,10 +294,33 @@
                     <button class="btn-wedding" onclick="confirmAttendance()">Confirmar asistencia</button>
                 </div>
             </section>
+
+            <!-- Comparte tus fotos (sección final) -->
+            <section class="rsvp-section photos-section section-shadow-seam">
+                <div class="photos-container">
+                    <img class="icono-invitacion icono-camara-subir" src="icono-camara-subir.png" alt="" loading="lazy">
+                    <h2 class="photos-title">Comparte tus fotos</h2>
+                    <p class="photos-text">Ayúdanos a guardar cada momento de esta noche. Sube aquí las fotos que tomes durante la fiesta.</p>
+                    <button class="btn-wedding" onclick="sharePhotos()">Subir fotos</button>
+                </div>
+            </section>
             </div>
         </div>
     </div>
     </main>
+
+    <!-- Ventana de notas importantes -->
+    <div id="notesModal" class="notes-modal" role="dialog" aria-modal="true" aria-labelledby="notesTitle" hidden>
+        <div class="notes-backdrop" onclick="closeNotes()"></div>
+        <div class="notes-card" tabindex="-1">
+            <button class="notes-close" onclick="closeNotes()" aria-label="Cerrar">&times;</button>
+            <h3 id="notesTitle" class="notes-title">Notas importantes</h3>
+            <div class="notes-rule" aria-hidden="true"></div>
+            <p>Preparé esta noche tan especial con mucho cariño y, para que todos puedan disfrutarla al máximo, les pido amablemente asistir sin niños.</p>
+            <p class="notes-thanks">¡Gracias por su comprensión y por acompañarme en mis XV!</p>
+            <button class="btn-wedding" onclick="closeNotes()">Entendido</button>
+        </div>
+    </div>
 
     <!-- Toast notification -->
     <div id="toast" class="toast">

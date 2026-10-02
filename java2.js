@@ -587,6 +587,25 @@ function showDressCode() {
     showToast("Código de Vestimenta", "Vestimenta formal. No se permite el color rojo: es exclusivo de la quinceañera 👑");
 }
 
+let notesLastFocus = null;
+function showNotes() {
+    const m = document.getElementById('notesModal');
+    notesLastFocus = document.activeElement;
+    m.hidden = false;
+    requestAnimationFrame(() => m.classList.add('is-open'));
+    m.querySelector(".notes-card").focus();
+}
+function closeNotes() {
+    const m = document.getElementById('notesModal');
+    m.classList.remove('is-open');
+    setTimeout(() => { m.hidden = true; }, 250);
+    if (notesLastFocus) notesLastFocus.focus();
+}
+document.addEventListener('keydown', (e) => {
+    const m = document.getElementById('notesModal');
+    if (e.key === 'Escape' && m && !m.hidden) closeNotes();
+});
+
 function sharePhotos() {
     window.open('https://photos.app.goo.gl/uzTKCA5Cn7UygvRs6', '_blank');
 }
@@ -631,7 +650,8 @@ const BUTTERFLY_SECTIONS = [
     { sel: '.gallery-section',    count: 3 },
     { sel: '.party-section',      count: 3 },
     { sel: '.gifts-section',      count: 2 },
-    { sel: '.rsvp-section',       count: 1 }
+    { sel: '.rsvp-section:not(.photos-section)', count: 1 },
+    { sel: '.photos-section',     count: 1 }
 ];
 // Lugares dentro de la sección (en %), a los lados para no tapar los textos
 const BUTTERFLY_SPOTS = {
