@@ -617,22 +617,7 @@ function openGiftLink() {
 function confirmAttendance() {
     // WhatsApp de confirmación: (849) 401-1271 con código de país 1
     const telefono = '18494011271';
-
-    // Si el enlace trae los invitados (?invitados=... o ?familia=...),
-    // sus nombres se ponen solos en el mensaje.
-    const params = new URLSearchParams(window.location.search);
-    const invitados = (params.get('invitados') || '')
-        .split(',').map(n => n.trim()).filter(Boolean);
-    const familia = (params.get('familia') || '').trim();
-
-    let quien;
-    if (invitados.length) quien = invitados.join(', ');
-    else if (familia) quien = `Familia ${familia}`;
-
-    const mensaje = quien
-        ? `¡Hola! Confirmo mi asistencia a los XV años de Ashley 🌹\nNombre: ${quien}`
-        : `¡Hola! Confirmo mi asistencia a los XV años de Ashley 🌹\nNombre: `;
-
+    const mensaje = '¡Hola! Confirmo mi asistencia a los XV años de Ashley 🌹';
     window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
 
