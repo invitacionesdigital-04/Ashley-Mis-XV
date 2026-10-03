@@ -54,9 +54,9 @@ function initializeIntro() {
         if (audio && mp3Available && !audio.error) {
             usingMp3 = true;
             audio.volume = 1;
-            // La canción trae ~5.8 s de silencio al inicio. Cuando la música
+            // "Dreaming of You" trae ~7 s casi en silencio al inicio. Cuando la música
             // empieza a escucharse, se apaga el sonido de la puerta.
-            const MUSICA_ENTRA_SEG = 5.7;
+            const MUSICA_ENTRA_SEG = 7.0;
             const onTime = () => {
                 if (audio.currentTime >= MUSICA_ENTRA_SEG) {
                     audio.removeEventListener('timeupdate', onTime);
