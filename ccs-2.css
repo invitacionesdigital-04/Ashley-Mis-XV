@@ -3530,3 +3530,49 @@ html.intro-lock body { overflow: hidden; }
     border: 2px solid #E9D08E !important;
     box-shadow: 0 0 0 3px rgba(255, 248, 238, .85), 0 6px 16px -4px rgba(60, 8, 16, .45) !important;
 }
+
+/* ===========================================================
+   Sin sección de regalo: se re-intercalan los colores
+   Confirma tu asistencia = VINO · Comparte tus fotos = CREMA
+   =========================================================== */
+.content .rsvp-section:not(.photos-section) {
+    background: radial-gradient(ellipse at 50% 0%, #8E1A2E 0%, var(--vino) 55%, var(--vino-oscuro) 100%) !important;
+    color: var(--crema-texto) !important;
+}
+.content .rsvp-section:not(.photos-section) .section-title { color: var(--crema-texto) !important; }
+.content .rsvp-section:not(.photos-section) .section-subtitle { color: var(--oro-claro) !important; }
+.content .rsvp-section:not(.photos-section) .section-title::after {
+    background:
+        radial-gradient(circle, var(--oro-claro) 0 3px, transparent 3.5px) center / 10px 10px no-repeat,
+        linear-gradient(90deg, transparent, var(--oro) 20%, var(--oro-claro) 50%, var(--oro) 80%, transparent) center / 100% 1px no-repeat !important;
+}
+.content .rsvp-section:not(.photos-section) .btn-wedding {
+    background: linear-gradient(135deg, #B8893A 0%, #E9D08E 50%, #C9A24D 100%) !important;
+    color: var(--vino-oscuro) !important;
+    border-color: #F3E2B0 !important;
+}
+.whatsapp-icon .icono-whatsapp {
+    width: 84px !important; height: 84px !important;
+    max-width: none !important; max-height: none !important;
+    flex: none !important; display: block; margin: 0 auto;
+    filter: drop-shadow(0 6px 12px rgba(30, 4, 10, .45));
+}
+.whatsapp-icon:has(.icono-whatsapp) { overflow: visible !important; }
+
+/* Comparte tus fotos pasa a crema */
+.content .photos-section {
+    background: #F7EEE2 !important;
+}
+.content .photos-section .photos-container {
+    background: linear-gradient(180deg, #FFFDF8 0%, #FBF0E4 100%);
+    border: 1px solid var(--oro);
+    box-shadow: 0 0 0 4px #FFFDF8, 0 0 0 5px rgba(201,162,77,.45), 0 14px 30px -14px rgba(122, 20, 38, .3);
+}
+.content .photos-section .photos-title { color: var(--vino); }
+.content .photos-section .photos-text { color: #8E5B4A; }
+.content .photos-section .photos-container .icono-camara-subir { filter: drop-shadow(0 4px 8px rgba(122, 20, 38, .2)); }
+.content .photos-section .btn-wedding {
+    background: linear-gradient(135deg, #7A1426 0%, #A31D2E 50%, #7A1426 100%) !important;
+    color: #FFF8EE !important;
+    border-color: var(--oro) !important;
+}
